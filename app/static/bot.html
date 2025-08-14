@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Manager - Bot Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="brand">
+      <a class="btn btn-secondary btn-sm" href="/ui/index.html">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back</span>
+      </a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-secondary btn-sm" id="dlLogs" href="#">
+        <i class="fas fa-download"></i>
+        <span>Download Logs</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="container mt-2">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title" id="bot-title">Bot Details</h2>
+        <div class="d-flex align-items-center gap-2">
+          <span class="bot-status stopped" id="bot-status">
+            <i class="fas fa-circle"></i>
+            <span>Stopped</span>
+          </span>
+        </div>
+      </div>
+      
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="overview">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Overview</span>
+        </button>
+        <button class="tab-btn" data-tab="config">
+          <i class="fas fa-cog"></i>
+          <span>Configuration</span>
+        </button>
+        <button class="tab-btn" data-tab="logs">
+          <i class="fas fa-file-alt"></i>
+          <span>Logs</span>
+        </button>
+        <button class="tab-btn" data-tab="schedules">
+          <i class="fas fa-clock"></i>
+          <span>Schedules</span>
+        </button>
+      </div>
+      
+      <div class="tab-content active" id="tab-overview">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>Bot Status</h3>
+          <div class="d-flex gap-1">
+            <button class="btn btn-success" id="startBtn">
+              <i class="fas fa-play"></i>
+              <span>Start</span>
+            </button>
+            <button class="btn btn-secondary" id="stopBtn">
+              <i class="fas fa-stop"></i>
+              <span>Stop</span>
+            </button>
+            <button class="btn btn-secondary" id="restartBtn">
+              <i class="fas fa-redo"></i>
+              <span>Restart</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="bot-stats">
+          <div class="stat-item">
+            <div class="stat-label">CPU Usage</div>
+            <div class="stat-value" id="cpu-usage">0%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Memory</div>
+            <div class="stat-value" id="memory-usage">0 MB</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Bot ID</div>
+            <div class="stat-value" id="bot-id">-</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Process ID</div>
+            <div class="stat-value" id="process-id">-</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="tab-config">
+        <div class="config-section">
+          <div class="config-section-header">
+            <h3 class="config-section-title">
+              <i class="fas fa-sliders-h"></i>
+              <span>Configuration Settings</span>
+            </h3>
+          </div>
+          <form id="cfgForm"></form>
+          <div class="d-flex justify-content-end mt-2">
+            <button class="btn btn-primary" id="saveCfg">
+              <i class="fas fa-save"></i>
+              <span>Save Configuration</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="tab-logs">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>Live Logs</h3>
+          <button class="btn btn-secondary btn-sm" id="clearLogs">
+            <i class="fas fa-broom"></i>
+            <span>Clear</span>
+          </button>
+        </div>
+        <div class="log-container" id="logbox">Connecting to log stream...</div>
+        <div class="mt-1 text-muted" id="logStatus">
+          <i class="fas fa-circle-notch fa-spin"></i>
+          <span>Waiting for logs...</span>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="tab-schedules">
+        <div class="config-section">
+          <div class="config-section-header">
+            <h3 class="config-section-title">
+              <i class="fas fa-clock"></i>
+              <span>Schedules</span>
+            </h3>
+          </div>
+          <p>Manage schedules inside <code>[[schedules]]</code> in the Configuration tab.</p>
+          <div class="mt-2">
+            <p><i class="fas fa-info-circle"></i> Schedules allow you to automate bot actions like starting, stopping, or restarting at specific times or intervals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="botpage.js"></script>
+</body>
+</html>

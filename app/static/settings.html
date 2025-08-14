@@ -1,0 +1,121 @@
+<!-- app/static/settings.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Bot Manager • Settings</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <nav>
+    <div class="brand">
+      <a class="btn btn-secondary btn-sm" href="/ui/index.html">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back</span>
+      </a>
+      <span>Manager Settings</span>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-primary" id="saveSettings">
+        <i class="fas fa-save"></i>
+        <span>Save Settings</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="card">
+      <div class="config-section-header">
+        <h3 class="config-section-title">
+          <i class="fas fa-sliders-h"></i>
+          <span>UI Settings</span>
+        </h3>
+      </div>
+      
+      <div class="config-field">
+        <label class="config-field-label">
+          <div class="config-field-name">Theme</div>
+          <div class="config-field-desc">Select the UI theme</div>
+        </label>
+        <select class="form-control form-select" id="ui.theme">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+      </div>
+      
+      <div class="config-field">
+        <label class="config-field-label">
+          <div class="config-field-name">Refresh Interval</div>
+          <div class="config-field-desc">Status refresh interval in milliseconds</div>
+        </label>
+        <input type="number" class="form-control" id="ui.refresh_interval" min="500" max="10000" step="100">
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="config-section-header">
+        <h3 class="config-section-title">
+          <i class="fas fa-file-alt"></i>
+          <span>Log Settings</span>
+        </h3>
+      </div>
+      
+      <div class="config-field">
+        <label class="config-field-label">
+          <div class="config-field-name">Max Log Lines</div>
+          <div class="config-field-desc">Maximum number of lines to keep in log display</div>
+        </label>
+        <input type="number" class="form-control" id="logs.max_lines" min="100" max="10000" step="100">
+      </div>
+      
+      <div class="config-field">
+        <label class="config-field-label">
+          <div class="config-field-name">Auto Scroll</div>
+          <div class="config-field-desc">Automatically scroll to new logs</div>
+        </label>
+        <select class="form-control form-select" id="logs.auto_scroll">
+          <option value="true">Enabled</option>
+          <option value="false">Disabled</option>
+        </select>
+      </div>
+      
+      <div class="config-field">
+        <label class="config-field-label">
+          <div class="config-field-name">Buffer Size</div>
+          <div class="config-field-desc">Buffer size for log tailing</div>
+        </label>
+        <input type="number" class="form-control" id="logs.buffer_size" min="1024" max="65536" step="1024">
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="config-section-header">
+        <h3 class="config-section-title">
+          <i class="fas fa-network-wired"></i>
+          <span>Web Settings</span>
+        </h3>
+      </div>
+      
+      <div class="config-field">
+        <label class="config-field-label">
+          <div class="config-field-name">Host</div>
+          <div class="config-field-desc">Web server host</div>
+        </label>
+        <input type="text" class="form-control" id="web.host">
+      </div>
+      
+      <div class="config-field">
+        <label class="config-field-label">
+          <div class="config-field-name">Port</div>
+          <div class="config-field-desc">Web server port</div>
+        </label>
+        <input type="number" class="form-control" id="web.port" min="1" max="65535">
+      </div>
+    </div>
+  </main>
+
+  <script src="settings.js"></script>
+</body>
+</html>

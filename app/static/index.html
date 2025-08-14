@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Manager - Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="brand">
+      <i class="fas fa-robot"></i>
+      <span>Bot Manager</span>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-primary" id="btn-create">
+        <i class="fas fa-plus"></i>
+        <span>New Bot</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container mt-2">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Your Bots</h2>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge badge-success" id="bot-count">0 bots</span>
+        </div>
+      </div>
+      <div class="grid" id="cards"></div>
+      <div id="empty-state" class="empty-state" style="display: none;">
+        <i class="fas fa-inbox"></i>
+        <h3>No Bots Found</h3>
+        <p>Create your first bot to get started</p>
+      </div>
+    </div>
+  </main>
+
+  <dialog id="createDlg">
+    <div class="dialog-header">
+      <h3 class="dialog-title">
+        <i class="fas fa-plus-circle"></i>
+        Create New Bot
+      </h3>
+      <button class="btn btn-icon btn-icon-only" id="cancelCreate">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <div class="form-group">
+        <label class="form-label" for="newName">Bot Name</label>
+        <input type="text" class="form-control" id="newName" placeholder="Enter bot name">
+        <div class="form-text">Give your bot a unique name to identify it</div>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button class="btn btn-secondary" id="cancelCreateFooter">
+        <i class="fas fa-times"></i>
+        <span>Cancel</span>
+      </button>
+      <button class="btn btn-primary" id="okCreate">
+        <i class="fas fa-plus"></i>
+        <span>Create Bot</span>
+      </button>
+    </div>
+  </dialog>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

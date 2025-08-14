@@ -1,0 +1,17 @@
+# Bot Manager Settings
+
+[ui]
+# UI theme settings
+theme = "dark"  # Options: "dark", "light"
+refresh_interval = 2000  # Status refresh interval in milliseconds
+
+[logs]
+# Log settings
+max_lines = 1000  # Maximum number of lines to keep in log display
+auto_scroll = true  # Automatically scroll to new logs
+buffer_size = 8192  # Buffer size for log tailing
+
+[web]
+# Web server settings
+host = "0.0.0.0"
+port = 8080

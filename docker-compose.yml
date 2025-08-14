@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  bot-manager:
+    build: .
+    container_name: bot-manager
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/app/app
+      - ./templates:/app/templates
+      - ./data:/data
+    command: uvicorn app.manager:app --host 0.0.0.0 --port 8080 --reload
+    restart: always

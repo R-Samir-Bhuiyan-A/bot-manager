@@ -1,0 +1,123 @@
+# ==========================================
+# Discum V5 Best-Friend Humanizer — Config
+# ==========================================
+
+# ---- Auth ----
+# DISCORD USER TOKEN (REQUIRED)
+# You MUST replace this with your actual Discord user token
+# See: https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-IDs
+discord_user_token = "YOUR_DISCORD_USER_TOKEN_HERE"
+
+# GEMINI API KEY (REQUIRED for AI features)
+# Get your free API key from: https://aistudio.google.com/app/apikey
+gemini_api_key     = "YOUR_GEMINI_API_KEY_HERE"
+
+# ---- Channels to watch (as strings) ----
+# Add the IDs of the channels you want the bot to monitor
+channel_ids = ["123456789012345678"]  # Replace with actual channel IDs
+
+# ---- Persona & Mood ----
+[persona]
+name       = "BotName"
+style      = "Casual Banglish. Avoid formal. Slang ok: 'bhai', 'vaiya', 'eyy', 'valo', 'kemon'."
+quirks     = "Short, chatty lines. 0–2 emojis max. Sometimes tiny typos."
+boundaries = "No NSFW/offensive content. Be respectful. Avoid politics."
+mood_daily_drift = 0.1             # amount mood can drift per day (0..1)
+moods = ["happy","chill","tired","playful","annoyed"]
+mood_change_probability = 0.08     # chance to change mood after a reply
+
+# ---- Reply behavior (public chat) ----
+[reply]
+max_reply_chars      = 600
+min_delay_sec        = 0         # 5 min
+max_delay_sec        = 0         # 10 min
+typing_speed_wpm     = 120
+multi_msg_probability = 0.20       # chance to split into 2-3 short messages
+outside_hours_reply_prob = 1.0
+# Reply chance by friendship level (public channel)
+[reply.public_probs]
+stranger      = 0.10   # score 0-10
+acquaintance  = 0.35   # 11-50
+friend        = 0.70   # 51-100
+bestfriend    = 0.95   # 101+
+
+mention_boost = 0.25   # boost when user @mentions you or says your name
+
+# ---- Friendship engine ----
+[friendship]
+start_score          = 0
+direct_mention_boost = 5
+long_chat_boost      = 3
+positive_boost       = 2
+fact_share_boost     = 3
+negative_penalty     = -3
+weekly_decay         = -1
+friend_threshold     = 51
+bestfriend_threshold = 101
+max_abs_score_change_per_day = 15
+
+# ---- Memory & facts ----
+[memory]
+max_history_per_channel = 15
+enable_fact_learning = true
+topic_track_max = 5
+fact_decay_days = 90
+recall_probability = 0.25
+
+# Fact extraction rules (regex with 1 capture group)
+[fact_rules]
+"\bmy name is\s+([a-zA-Zঅ-হ]+)"          = "name"
+"\bamar nam\s+([a-zA-Zঅ-হ]+)"            = "name"
+"\bi am from\s+([a-zA-Zঅ-হ]+)"            = "location"
+"\bami\s+([a-zA-Zঅ-হ]+)\s+pochondo\b"   = "likes"
+"\bi like\s+([a-zA-Zঅ-হ0-9\s]+)"         = "likes"
+"\bamar basha\s+([a-zA-Zঅ-হ]+)"           = "location"
+
+# ---- Style mirroring ----
+[mirror]
+enable = true
+weight_lowercase = 0.5       # how much to mirror lowercase style
+weight_emoji     = 0.3       # how much to mirror emoji usage
+weight_length    = 0.2       # how much to mirror length
+
+# ---- Triggers & Filters ----
+[filters]
+blocked_user_ids  = ["1195406583690170531"]
+blocked_keywords  = ["nsfw","scam","nitro gen","token","opensex"]
+require_keyword_any = []     # if non-empty, only reply when any present
+keywords_priority = ["rafi","bhai","vai","bro"]   # raises priority a bit
+
+# ---- Passive reactions ----
+[emoji]
+reply_emojis = ["😂","😅","🔥","😎","🙌","👍"]
+reaction_probability = 0.10
+reaction_window_seconds = 900
+
+# ---- Active hours (local machine time) ----
+[active_hours]
+start_hour = 12
+end_hour   = 24
+
+# ---- Self-start small talk (mentions a friend) ----
+[self_start]
+enabled          = true
+min_idle_seconds = 1800
+chance           = 0.30
+openers = [
+  "bhai ki obostha? 👀",
+  "ki khobor bro?",
+  "eyy koi gelo sobai?",
+  "valo asi, tumi kmn? 😅",
+  "ajke plan ki? gaming naki?"
+]
+
+# ---- Rate limits ----
+[rate_limit]
+max_per_channel_per_hour = 12
+per_user_cooldown_s       = 120
+
+# ---- Storage & Logs ----
+[storage]
+debug_log_file = "debug_log.txt"
+ai_log_file    = "ai_log.txt"
+db_file        = "chatbrain.sqlite"
